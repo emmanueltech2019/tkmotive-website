@@ -23,8 +23,9 @@ const TbtnIonstyle = "w-[26.91px] h-[3.84px] bg-[--foreground-light-orange] roun
 
 const Navbar = ({func}:NavbarType) => {
     const [Ts, Tfunc] = useToggle(false);
+    
   return (
-    <header className='flex justify-between py-3 lg:py-6'>
+    <header className='flex justify-between py-3 lg:py-6 relative'>
         {/* logo */}
         <div className="col">
             <Link href='/'><Image src={TkmotiveLogo} alt='TKMotive' className='w-full max-w-10 md:max-w-[74px] object-cover' /></Link>
@@ -50,6 +51,8 @@ const Navbar = ({func}:NavbarType) => {
             </div>
             <button className={`hidden lg:flex justify-center items-center uppercase ${interFont} font-extrabold text-white px-[30px] py-4 border border-[--foreground-light-orange] rounded-[30px] bg-[--foreground-orange] btn-shadow`}>Book Now</button>
         </div>
+
+        <div></div>
     </header>
   )
 }
