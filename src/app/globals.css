@@ -3,31 +3,92 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-color: #fff;
+  --text-color: #000;
+  --bg-image: url(../assets/images/ready_to_chill.png);
+
+  /* green */
+  --foreground-green: #083D21;
+  --shadow-green: #50834E;
+
+  /* orange */
+  --foreground-orange: #E09427;
+  --foreground-light-orange: #FFF5E6;
+
+  /* red */
+  --icon-red: #F43B3B;
+
+  --padding-x: 15px;
+}
+h1{
+  font-size: 55px;
+  line-height: 60.31px;
+}
+h2{
+  font-size: 45px;
+  line-height: 1.5;
+}
+p,span,div,button{
+  @apply text-base
+}
+/* button:focus-within{
+  opacity: 0.5;
+} */
+@media screen and (min-width: 1024px) {
+  :root{
+    --padding-x: 100px;
+  }
+  h1{
+    font-size: 100px;
+    line-height: 106px;
+  }
+  h2{
+    font-size: 80px;
+  }
+  p,span,div,button{
+    @apply text-lg leading-[30px] font-light
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+.btn-shadow {
+  filter: drop-shadow(-5px 5px 0px var(--foreground-light-orange));
+  transition: all 0.3s;
+}.btn-shadow:hover {
+  filter: drop-shadow(5px 5px 0px var(--foreground-light-orange));
+}
+
+.btn-shadow2 {
+  filter: drop-shadow(-5px 5px 0px var(--shadow-green));
+  transition: all 0.3s;
+}.btn-shadow2:hover {
+  filter: drop-shadow(5px 5px 0px var(--shadow-green));
+  outline: none;
+}
+
+.btn-shadow3 {
+  filter: drop-shadow(-5px 5px 0px var(--foreground-orange));
+  outline: none;
+  transition: all 0.3s;
+}.btn-shadow3:hover {
+  filter: drop-shadow(5px 5px 0px var(--foreground-orange));
+  outline: none;
+}
+
+.about.embla__slide{
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.gallery__slide.embla__slide{
+  flex: 0 0 40%;
+
+}
+
+
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+} */
