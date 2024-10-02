@@ -18,6 +18,11 @@ const links = [
     { text: 'Menu', href: '#menu' },
     { text: 'Contact', href: '#contact' },
 ]
+const contactLinks = [
+    { icon: 'fluent:mail-24-filled', text: 'MAIL', href: 'mailto:info@tkmotive.com' },
+    { icon: 'bi:phone-fill', text: 'PHONE', href: 'tel:08128675585' },
+    { icon: 'mdi:location', text: 'LOCATION', href: 'https://maps.app.goo.gl/bajEhtecHC8apgCt6' }
+]
 
 const TbtnIonstyle = "w-[26.91px] h-[3.84px] bg-[--foreground-light-orange] rounded-full leading-none"
 
@@ -53,25 +58,24 @@ const Navbar = ({ func }: NavbarType) => {
             </div>
 
             <div className={`absolute top-full text-[#6D6D6D] ${Ts ? 'right-0' : '-right-full'} p-6 w-[301px] bg-[#fff] shadow-md rounded-3xl flex lg:hidden flex-col items-center transition-all ease-in-out duration-500 z-50`}>
-                <ul className="lg:flex gap-9 font-[400] leading-[50px] text-right my-5 lg:my-0">
+                <ul className="font-[400] leading-[50px] text-center my-5 lg:my-0">
                     {links.map(({ text, href }, i) => (
                         <li key={text + i} className="hover:text-[#D00000] cursor-pointer transition duration-500 ease-in-out">
-                            <Link href={href} className={`text-2xl`}>{text}</Link>
+                            <Link href={href} className={`text-2xl`} onClick={Tfunc}>{text}</Link>
                         </li>
                     ))}
                 </ul>
-                <div className="socials flex flex-col items-center gap-2 ms-[60px] lg:hidden">
-                    <Link target="_blank" href="https://web.facebook.com/profile.php?id=61561081104975">
-                        <Icon icon="fluent:mail-24-filled" className="w-[32px] h-[32px] hover:text-[#D00000] transition duration-500 ease-in-out" />
-                    </Link>
-                    <div className="bg-[#000000] h-[60px] w-[.7px]"></div>
-                    <Link target="_blank" href="https://www.instagram.com/choplifeshawarma/">
-                        <Icon icon="bi:phone-fill" className="w-[32px] h-[32px] hover:text-[#D00000] transition duration-500 ease-in-out" />
-                    </Link>
-                    <div className="bg-[#000000] h-[60px] w-[.7px]"></div>
-                    <Link target="_blank" href="mailto:choplife@devemmy.com">
-                        <Icon icon="mdi:location" className="w-[32px] h-[32px] hover:text-[#D00000] transition duration-500 ease-in-out" />
-                    </Link>
+                <div className="socials flex flex-col items-center gap-2 lg:hidden">
+                    {
+                        contactLinks.map(({ icon, text, href }, i) => (
+                            <>
+                                <Link target="_blank" href={href} key={text + i} className={`hover:text-[#D00000] transition duration-500 ease-in-out`} onClick={Tfunc}>
+                                    <Icon icon={icon} className="w-[24px] h-[24px]" />
+                                </Link>
+                                {i !== 2 && <div className="bg-[#000000] h-[60px] w-[.7px]"></div>}
+                            </>
+                        ))
+                    }
                 </div>
             </div>
         </header>

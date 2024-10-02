@@ -4,9 +4,9 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import Link from 'next/link';
 
 const contactLinks = [
-    { icon: 'fluent:mail-24-filled', text: 'MAIL', href: '/' },
-    { icon: 'bi:phone-fill', text: 'PHONE', href: '/' },
-    { icon: 'mdi:location', text: 'LOCATION', href: '/' }
+    { icon: 'fluent:mail-24-filled', text: 'MAIL', href: 'mailto:info@tkmotive.com' },
+    { icon: 'bi:phone-fill', text: 'PHONE', href: 'tel:08128675585' },
+    { icon: 'mdi:location', text: 'LOCATION', href: 'https://maps.app.goo.gl/bajEhtecHC8apgCt6' }
 ]
 
 const Contact = () => {
