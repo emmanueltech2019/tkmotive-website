@@ -57,8 +57,8 @@ const Navbar = ({ func }: NavbarType) => {
                 </div>
                 <button className={`hidden lg:flex justify-center items-center uppercase ${interFont} font-extrabold text-white px-[30px] py-4 border border-[--foreground-light-orange] rounded-[30px] bg-[--foreground-orange] btn-shadow`}>Book Now</button>
             </div>
-
-            <div className={`absolute top-full text-[#6D6D6D] ${Ts ? 'right-0' : '-right-full'} p-6 w-[301px] bg-[#fff] shadow-md rounded-3xl flex lg:hidden flex-col items-center transition-all ease-in-out duration-500 z-50`}>
+            
+            <div className={`overflow-hidden absolute top-full right-0 text-[#6D6D6D] ${Ts ? 'max-h-[1000px] p-6 mt-2' : 'max-h-0'} w-[301px] bg-[#fff] shadow-md rounded-3xl flex lg:hidden flex-col items-center transition-all ease-in-out duration-500 z-50`}>
                 <ul className="font-[400] leading-[50px] text-center my-5 lg:my-0">
                     {links.map(({ text, href }, i) => (
                         <li key={text + i} className="hover:text-[#D00000] cursor-pointer transition duration-500 ease-in-out">

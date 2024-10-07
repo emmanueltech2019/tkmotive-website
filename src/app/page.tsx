@@ -9,7 +9,7 @@ import Services from './_components/Services'
 
 const Home = () => {
   return (
-    <div className='relative overflow-hidden'>
+    <div className='relative'>
       <Hero />
       <JollofRice />
       <About />
