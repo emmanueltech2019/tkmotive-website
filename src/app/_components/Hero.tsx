@@ -7,17 +7,22 @@ import antonFont from "@/fonts/Anton";
 import HeroImage from "@/assets/images/hero-image.svg";
 import Cart from "@/components/modal/Cart";
 import Verification from "@/components/modal/Verification";
+import Details from "@/components/modal/Details";
 
 const Hero = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true});
-  const [showCart, setShowCart] = useState(false)
-  const [showV, setV] = useState(false)
   useEffect(() => {
     if (emblaApi) {
       console.log(true); // Access API
     }
   }, [emblaApi]);
 
+  // modals creation and states
+  const [showCart, setShowCart] = useState(false)
+  const [showDetails, setShowDetails] = useState(true)
+  const [showV, setV] = useState(false)
+
+  // Cart Modal Functions
   const closeCart = () => {
     setShowCart(false);
   }
@@ -25,11 +30,21 @@ const Hero = () => {
     setShowCart(true);
   }
 
+  // Details Modal Functions
+  const closeDetails = () => {
+    setShowDetails(false);
+  }
+  const openDetails = () => {
+    closeCart();
+    setShowDetails(true);
+  }
+
+  // Verification Modal Functions
   const closeV = () => {
     setV(false);
   }
   const openV = () => {
-    closeCart();
+    closeDetails();
     setV(true);
   }
   
@@ -41,6 +56,7 @@ const Hero = () => {
       {/* modal */}
       <Cart func={closeCart} modalState={showCart} handleV={openV} />
       <Verification func={closeV} modalState={showV} />
+      <Details func={closeDetails} modalState={showDetails} verfication={openV} />
 
       <section className="flex flex-col lg:flex-row items-center pb-16 gap-y-14 px-[--padding-x]">
         <div
