@@ -44,6 +44,7 @@ const Menu = () => {
           confirmButtonText: 'Try Again'
         })
       }
+      
     }
 
   };
