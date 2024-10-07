@@ -19,7 +19,7 @@ const Hero = () => {
 
   // modals creation and states
   const [showCart, setShowCart] = useState(false)
-  const [showDetails, setShowDetails] = useState(true)
+  const [showDetails, setShowDetails] = useState(false)
   const [showV, setV] = useState(false)
 
   // Cart Modal Functions
