@@ -55,7 +55,7 @@ const Hero = () => {
       </div>
       <div className="bg-[--foreground-green]">
         {/* modal */}
-        <Cart func={closeCart} modalState={showCart} handleV={openV} />
+        <Cart func={closeCart} modalState={showCart} handleV={openDetails} />
         <Verification func={closeV} modalState={showV} />
         <Details func={closeDetails} modalState={showDetails} verfication={openV} />
 
