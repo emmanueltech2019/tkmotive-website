@@ -37,7 +37,7 @@ const Menu = () => {
       try {
         let savedUserId = localStorage.getItem('userId');
         await axios({
-          url: "http://localhost:4000/cart/add",
+          url: "https://api.tkmotive.com/cart/add",
           method: "post",
           data: {
             userId:savedUserId,

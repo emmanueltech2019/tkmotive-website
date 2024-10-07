@@ -25,7 +25,7 @@ const Cart = ({func, modalState, handleV}:cartType) => {
         // setStore(staticCart)
         let savedUserId = localStorage.getItem('userId');
         axios({
-            url:"http://localhost:4000/cart/"+savedUserId,
+            url:"https://api.tkmotive.com/cart/"+savedUserId,
             method:"get"
         })
         .then((res)=>{
