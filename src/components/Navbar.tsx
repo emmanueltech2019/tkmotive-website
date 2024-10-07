@@ -11,6 +11,7 @@ type NavbarType = {
     func: () => void
 }
 
+
 const links = [
     { text: 'About', href: '#about' },
     { text: 'Services', href: '#services' },
