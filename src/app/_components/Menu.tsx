@@ -44,7 +44,7 @@ const Menu = () => {
           confirmButtonText: 'Try Again'
         })
       }
-      
+
     }
 
   };
@@ -74,7 +74,7 @@ const Menu = () => {
             </h3>
           </div>
           <div className="col flex-1">
-          <div className="flex flex-wrap items-center gap-[10px] max-h-96 overflow-auto">
+          <div className="flex flex-wrap items-center gap-[10px] max-h-96 overflow-auto menu_box">
             {menu.map(({ item, state }) => (
               <button
                 key={item}

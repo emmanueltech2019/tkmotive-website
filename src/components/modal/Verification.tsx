@@ -1,5 +1,6 @@
 import interFont from "@/fonts/Inter";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import axios from "axios";
 import { Modal } from "flowbite-react";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ const Verification = ({ func, modalState }: vType) => {
     };
 
 
-    const handleSbmit = (e: eventType) => {
+    const handleSbmit = async (e: eventType) => {
         e.preventDefault();
 
         let result: string = "";
@@ -42,7 +43,13 @@ const Verification = ({ func, modalState }: vType) => {
         let res: number = Number(result);
 
         // TODO: validate code and navigate to next page
-        
+        const data = {orderId: window?.localStorage.getItem('orderId'), verificationCode: res}
+        try {
+            const response = await axios.post('https://api.tkmotive.com/order/verify', data)
+            console.log(response)
+        }catch (e) {
+            console.error(`verification post error: ${e}`)
+        }
 
         // TODO: clear VCode state
         // setVCode([]);
