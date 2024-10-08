@@ -49,7 +49,7 @@ const Verification = ({ func, modalState }: vType) => {
         let res: number = Number(result);
 
         // TODO: validate code and close modal if valid
-        const data = { orderId: window?.localStorage.getItem('orderId'), verificationCode: result }
+        const data = { orderId: window?.localStorage.getItem('orderId'), verificationCode: res }
         try {
             const response = await axios.post('https://api.tkmotive.com/order/verify', data)
             console.log(response)
