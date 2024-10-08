@@ -80,7 +80,7 @@ const Verification = ({ func, modalState }: vType) => {
                             ))}
                         </div>
 
-                        <button className="w-full text-center font-semibold py-4 my-3">No referral code</button>
+                        <div className="w-full py-4 my-3"></div>
                         <button type="submit" className={`w-full flex justify-center items-center ${interFont} font-extrabold text-lg text-white px-[30px] py-3 border border-[--foreground-light-orange] rounded-[24px] bg-[--foreground-green] btn-shadow3`}>Confirm</button>
                     </form>
                 </section>

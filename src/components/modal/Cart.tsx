@@ -50,9 +50,9 @@ const Cart = ({func, modalState, handleV}:cartType) => {
                                     <div className="col flex flex-col">
                                         <h3 className={`title font-extrabold text-lg`}>{productName}</h3>
                                         <div className="flex items-center gap-x-[10px]">
-                                            <div className="w-7 lg:w-[33px] h-7 lg:h-[33px] bg-slate-500 rounded-full text-center flex justify-center items-center text-white border border-[--foreground-light-orange] rounded-[24px] bg-[--foreground-green] btn-shadow3">-</div>
+                                            <div className="w-7 lg:w-[33px] h-7 lg:h-[33px] bg-slate-500 rounded-full text-center flex justify-center items-center text-white border border-[--foreground-light-orange] bg-[--foreground-green] btn-shadow3">-</div>
                                             <p>{quantity}</p>
-                                            <div className="w-7 lg:w-[33px] h-7 lg:h-[33px] bg-slate-500 rounded-full text-center flex justify-center items-center text-white border border-[--foreground-light-orange] rounded-[24px] bg-[--foreground-green] btn-shadow3">+</div>
+                                            <div className="w-7 lg:w-[33px] h-7 lg:h-[33px] bg-slate-500 rounded-full text-center flex justify-center items-center text-white border border-[--foreground-light-orange] bg-[--foreground-green] btn-shadow3">+</div>
                                         </div>
                                     </div>
                                     <div className="price self-end ml-auto font-light text-sm lg:text-base">
