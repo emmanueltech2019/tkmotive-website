@@ -27,7 +27,7 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
 
         try {
             const response = await axios.post('https://api.tkmotive.com/order', data)
-            console.log(response.data)
+            window.localStorage.setItem('orderId', response.data.orderId)
         } catch (error) {
             console.error(`post request ${error}`)
         }
