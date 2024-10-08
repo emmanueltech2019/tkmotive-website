@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description: "TKMotive",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
