@@ -22,18 +22,16 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
     const handleSubmit = async (e: eventType) => {
         e.preventDefault();
 
-        const data = {name: nameState, email: emailState, phone: phoneState, address: addressState, userId: window?.localStorage.getItem('userId')}
-        console.log(data)
+        const data = { name: nameState, email: emailState, phone: phoneState, address: addressState, userId: window?.localStorage.getItem('userId') }
 
         try {
             const response = await axios.post('https://api.tkmotive.com/order', data)
             window.localStorage.setItem('orderId', response.data.orderId)
+            verfication();
+            func()
         } catch (error) {
             console.error(`post request ${error}`)
         }
-
-        verfication();
-        func()
     }
 
     return (
