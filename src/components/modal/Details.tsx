@@ -3,6 +3,8 @@ import { FC } from 'react'
 import useForm from "@/hooks/useForm"
 import { Modal } from "flowbite-react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import axios from 'axios';
+import { Z_DATA_ERROR } from 'zlib';
 
 type eventType = React.MouseEvent<HTMLFormElement, MouseEvent>
 type DetailsPropsType = {
@@ -17,8 +19,19 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
     const [phoneState, setphone] = useForm('')
     const [addressState, setaddress] = useForm('')
 
-    const handleSubmit = (e: eventType) => {
+    const handleSubmit = async (e: eventType) => {
         e.preventDefault();
+
+        const data = {name: nameState, email: emailState, phone: phoneState, address: addressState, userId: window?.localStorage.getItem('userId')}
+        console.log(data)
+
+        try {
+            const response = await axios.post('https://api.tkmotive.com/order', data)
+            console.log(response.data)
+        } catch (error) {
+            console.error(`post request ${error}`)
+        }
+
         verfication();
         func()
     }
