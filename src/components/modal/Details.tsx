@@ -4,7 +4,6 @@ import useForm from "@/hooks/useForm"
 import { Modal } from "flowbite-react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from 'axios';
-import { Z_DATA_ERROR } from 'zlib';
 
 type eventType = React.MouseEvent<HTMLFormElement, MouseEvent>
 type DetailsPropsType = {
