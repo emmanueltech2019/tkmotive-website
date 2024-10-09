@@ -6,6 +6,7 @@ import Link from 'next/link';
 import antonFont from '@/fonts/Anton';
 import useToggle from '@/hooks/useToggle';
 import interFont from '@/fonts/Inter';
+import { Fragment } from 'react';
 
 type NavbarType = {
     func: () => void
@@ -69,12 +70,12 @@ const Navbar = ({ func }: NavbarType) => {
                 <div className="socials flex flex-col items-center gap-2 lg:hidden">
                     {
                         contactLinks.map(({ icon, text, href }, i) => (
-                            <>
-                                <Link target="_blank" href={href} key={text + i} className={`hover:text-[#D00000] transition duration-500 ease-in-out`} onClick={Tfunc}>
+                            <Fragment key={text + i}>
+                                <Link target="_blank" href={href} className={`hover:text-[#D00000] transition duration-500 ease-in-out`} onClick={Tfunc}>
                                     <Icon icon={icon} className="w-[24px] h-[24px]" />
                                 </Link>
                                 {i !== 2 && <div className="bg-[#000000] h-[60px] w-[.7px]"></div>}
-                            </>
+                            </Fragment>
                         ))
                     }
                 </div>

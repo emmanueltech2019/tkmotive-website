@@ -5,6 +5,8 @@ import bigImg from "@/assets/images/bigImg.svg";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import MENU_LIST from "./menu_list";
+import { sections } from "./menu_list";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { v4 as uuidv4 } from 'uuid'; // To generate unique IDs
 
 const Menu = () => {
@@ -12,9 +14,10 @@ const Menu = () => {
   const [userId, setUserId] = useState<string>(''); // Ensure userId is always a string
 
   const handleMenu = async (item: string) => {
-    const updatedMenu = menu.map(({ item: menuItem, price, state }) => ({
+    const updatedMenu = menu.map(({ item: menuItem, price, state, section }) => ({
       item: menuItem,
       price,
+      section,
       state: menuItem === item ? !state : state,
     }));
     setMenu(updatedMenu);
@@ -62,6 +65,21 @@ const Menu = () => {
   }, []);
 
 
+  // Create state for each item
+  const [sectionState, setSectionState] = useState(sections)
+
+  const toggleItem = (selectedItem: string) => {
+    // Create a new array and toggle the selected index
+    setSectionState(prev =>
+      prev.map(({ name, active }) => ({ name, active: name === selectedItem ? !active : active }))
+    );
+    setSectionState(prev =>
+      prev.map(({ name, active }) => ({ name, active: name !== selectedItem ? false : active }))
+    );
+
+  };
+
+
   return (
     <div id="menu">
       <section className="px-[--padding-x] pt-10 pb-20">
@@ -73,22 +91,33 @@ const Menu = () => {
               & more...
             </h3>
           </div>
-          <div className="col flex-1">
-          <div className="flex flex-wrap items-center gap-[10px] max-h-96 overflow-auto menu_box">
-            {menu.map(({ item, state }) => (
-              <button
-                key={item}
-                className={`px-5 py-[10px] border border-[--foreground-green] ${state
-                  ? "bg-[--foreground-green] text-white"
-                  : "bg-white text-black"
-                  }`}
-                onClick={() => handleMenu(item)}
-              >
-                {item}
-              </button>
+          <div className="col flex-1 flex flex-col gap-3 py-3">
+            {sectionState.map(({ name, active }) => (
+              <div key={name}>
+                <button className="flex items-center justify-between cursor-pointer w-full group" onClick={() => { toggleItem(name) }}>
+                  <span className="text-xl font-medium group-hover:underline">
+                    {name}
+                  </span>
+                  <Icon icon='tabler:chevron-down' className={`text-xl font-medium transition-all duration-300 ${active ? 'rotate-180' : 'rotate-0'}`} />
+                </button>
+
+                <div className={`flex flex-wrap items-center gap-[10px] menu_box transition-all duration-300 ${active ? 'max-h-96 overflow-auto' : 'max-h-0 overflow-hidden'}`}>
+                  {menu.filter(({ section }) => section === name).map(({ item, state }) => (
+                    <button key={item}
+                      className={`px-5 py-[10px] border border-[--foreground-green] ${state
+                        ? "bg-[--foreground-green] text-white"
+                        : "bg-white text-black"
+                        }`}
+                      onClick={() => handleMenu(item)}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
-          </div>
-          <p className="pt-[10px]">Infused with rich spices and cooked to perfection</p>
+
+            <p className="pt-[10px]">Infused with rich spices and cooked to perfection</p>
           </div>
         </div>
       </section>

@@ -41,7 +41,7 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
                     <Icon icon='mingcute:close-fill' className="text-2xl" />
                 </button>
 
-                <div className="contact-Entries flex flex-col lg:flex-row items-start lg:items-center justify-center gap-10">
+                <div className="contact-Entries flex flex-col md:flex-row items-start md:items-center justify-center md:gap-5 lg:gap-10">
                     <div className="col w-full lg:w-max">
                         <form className='px-[22px] py-[19px] bg-[--form-green] rounded-[9.09px]' onSubmit={handleSubmit}>
                             <div className="fname-lname flex flex-col mb-[22px]">
@@ -55,8 +55,8 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
                             </div>
 
                             <div className="phone flex flex-col mb-[22px]">
-                                <label htmlFor="phone" className='font-semibold text-sm mb-2'>Phone</label>
-                                <input type="text" id='phone' onChange={e => setphone(e)} value={phoneState} required className='w-full lg:w-[272.57px] pl-7 pr-2 py-3 rounded-lg text-sm outline-none text-black placeholder:text-[--text-color-gray]' placeholder='+234' />
+                                <label htmlFor="phone" className='font-semibold text-sm mb-2'>WhatsApp Number</label>
+                                <input type="text" id='phone' onChange={(e: any) => { if (isNaN(e.target.value)) return false; setphone(e) }} value={phoneState} required className='w-full lg:w-[272.57px] pl-7 pr-2 py-3 rounded-lg text-sm outline-none text-black placeholder:text-[--text-color-gray]' placeholder='+234' />
                             </div>
 
                             <div className="address flex flex-col mb-[22px]">
@@ -71,22 +71,24 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
                             </button>
                         </form>
                     </div>
-                    <div className="col">
-                        <div className='pb-10'>
-                            <h3 className='font-semibold text-base lg:text-lg mb-4'>Call us</h3>
-                            <p className='text-[--text-color-gray]'>+2348128675585</p>
+                    <div className="col flex flex-col-reverse md:flex-col">
+                        <div>
+                            <div className='pb-10'>
+                                <h3 className='font-semibold text-base lg:text-lg mb-4'>Call us</h3>
+                                <p className='text-[--text-color-gray]'>+2348128675585</p>
+                            </div>
+
+                            <div className='pb-10'>
+                                <h3 className='font-semibold text-base lg:text-lg mb-4'>Email us</h3>
+                                <p className='text-[--text-color-gray]'>info@tkmotive.com</p>
+                            </div>
                         </div>
 
-                        <div className='pb-10'>
-                            <h3 className='font-semibold text-base lg:text-lg mb-4'>Email us</h3>
-                            <p className='text-[--text-color-gray]'>info@tkmotive.com</p>
-                        </div>
-
-                        <div className='pb-10'>
-                            <h3 className='font-semibold text-base lg:text-lg'>Visit us</h3>
-                            <p className='text-[--text-color-gray]'>22 Amadi-Ama Rd,</p>
-                            <p className='text-[--text-color-gray]'>Amadi, Port Harcourt 500001,</p>
-                            <p className='text-[--text-color-gray]'>Rivers</p>
+                        <div className='pb-10 '>
+                            <h3 className='font-semibold text-base lg:text-lg'>Disclaimer</h3>
+                            <p className='text-[--text-color-gray] md:text-nowrap'>Our Plastic Packs Are Free,</p>
+                            <p className='text-[--text-color-gray] md:text-nowrap'>And Delivery Is Booked By You Via,</p>
+                            <p className='text-[--text-color-gray]'>| TKMOTIVE | One Haulling Apps</p>
                         </div>
                     </div>
                 </div>
