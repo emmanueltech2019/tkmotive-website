@@ -32,7 +32,7 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
         } catch (error: any) {
             if(error.message == "Network Error") Swal.fire({
                 title: error.message,
-                text: `Something went wrong!`,
+                text: `Something went wrong!!`,
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             })
