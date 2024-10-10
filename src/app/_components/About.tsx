@@ -3,7 +3,9 @@ import React, { useEffect, useCallback } from "react";
 import antonFont from "@/fonts/Anton";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import ourEssence from "@/assets/images/our_essence.svg";
+import ourEssence from "@/assets/icons/our_essence.svg";
+import fluentFoodEggs from "@/assets/icons/fluent_food-egg-24-regular.svg"
+import foodOutLine from "@/assets/icons/mdi_food-outline.svg"
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 const carouselObj = [
@@ -14,12 +16,12 @@ const carouselObj = [
         Whether you're catching up with friends or seeking a solo unwind, we've got you covered.`,
   },
   {
-    image: ourEssence,
+    image: fluentFoodEggs,
     title: "More Than Just a Spot",
     text: `TKmotive isn’t just a place to eat and drink – it’s where good vibes meet great company. Experience the magic of a truly personal chill zone.`,
   },
   {
-    image: ourEssence,
+    image: foodOutLine,
     title: "Lounge, Sip, Dine",
     text: `From our cozy lounge setting to our finely curated drink menu, everything is designed for comfort and class. Sip on crafted cocktails while you relax in style.`,
   },

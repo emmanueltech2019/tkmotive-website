@@ -4,6 +4,7 @@ import useForm from "@/hooks/useForm"
 import { Modal } from "flowbite-react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 type eventType = React.MouseEvent<HTMLFormElement, MouseEvent>
 type DetailsPropsType = {
@@ -28,8 +29,13 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
             window.localStorage.setItem('orderId', response.data.orderId)
             verfication();
             func()
-        } catch (error) {
-            console.error(`post request ${error}`)
+        } catch (error: any) {
+            if(error.message == "Network Error") Swal.fire({
+                title: error.message,
+                text: `Something went wrong!`,
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            })
         }
     }
 
@@ -60,7 +66,7 @@ const Details: FC<DetailsPropsType> = ({ func, modalState, verfication }) => {
 
                             <div className="address flex flex-col mb-[22px]">
                                 <label htmlFor="address" className='font-semibold text-sm mb-2'>Delivery Address</label>
-                                <input type="text" id='address' onChange={e => setaddress(e)} value={addressState} className='w-full lg:w-[272.57px] pl-7 pr-2 py-3 rounded-lg text-sm outline-none text-black placeholder:text-[--text-color-gray]' placeholder='Type your address' />
+                                <input type="text" id='address' onChange={e => setaddress(e)} value={addressState} className='w-full lg:w-[272.57px] pl-7 pr-2 py-3 rounded-lg text-sm outline-none text-black placeholder:text-[--text-color-gray]' placeholder='Type your address' required />
                             </div>
 
                             <button className='px-7 py-4 bg-[--foreground-green] text-[--foreground-light-orange] text-base lg:text-lg text-white rounded-lg block w-full'>

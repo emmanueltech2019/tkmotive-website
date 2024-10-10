@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from "axios";
 import { Modal } from "flowbite-react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 type eventType = React.MouseEvent<HTMLButtonElement, MouseEvent>
 type vType = {
@@ -13,6 +14,7 @@ type vType = {
 const Verification = ({ func, modalState }: vType) => {
 
     const [VCode, setVCode] = useState<string[]>(new Array(4).fill(""));
+    const [error, setError] = useState<string>("");
 
     const handleChange = (e: any, i: any) => {
         if (isNaN(e.target.value)) return false;
@@ -52,11 +54,20 @@ const Verification = ({ func, modalState }: vType) => {
         const data = { orderId: window?.localStorage.getItem('orderId'), verificationCode: res }
         try {
             const response = await axios.post('https://api.tkmotive.com/order/verify', data)
-            console.log(response)
+            window.localStorage.removeItem('orderId');
+            setError('')
+            Swal.fire({
+                title: 'SUCCESS',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
             func()
-        } catch (e) {
-            console.error(`verification post error: ${e}`)
+        } catch (e:any) {
+            if(e.response.data.message == "Invalid verification code") setError(e.response.data.message)
         }
+
+        // Reset OTP input fields
+        setVCode(new Array(4).fill(""));
     };
 
     return (
@@ -84,6 +95,7 @@ const Verification = ({ func, modalState }: vType) => {
                                 />
                             ))}
                         </div>
+                        <div className="text-center py-2 text-sm text-[red]">{error}</div>
 
                         <div className="w-full py-4 my-3"></div>
                         <button onClick={handleSubmit} type="submit" className={`w-full flex justify-center items-center ${interFont} font-extrabold text-lg text-white px-[30px] py-3 border border-[--foreground-light-orange] rounded-[24px] bg-[--foreground-green] btn-shadow3`}>Confirm</button>
